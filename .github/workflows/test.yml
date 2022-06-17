@@ -3,7 +3,7 @@ name: SetStatus
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */2 * * *"
+    - cron: '0 16 * * *'
 
 jobs:
   set-status:
@@ -19,9 +19,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+      - run: npm ci
+      - run: npm test
+        env:
           TARGET_URL: ${{secrets.TARGET_URL}}
           USER_EMAIL: ${{secrets.USER_EMAIL}}
           USER_PASSWORD: ${{secrets.USER_PASSWORD}}
-      - run: npm ci
-      - run: npm test
 
