@@ -1,0 +1,27 @@
+name: SetStatus
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */2 * * *"
+
+jobs:
+  set-status:
+    name: Set User's status at slack
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 14.x ]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          TARGET_URL: ${{secrets.TARGET_URL}}
+          USER_EMAIL: ${{secrets.USER_EMAIL}}
+          USER_PASSWORD: ${{secrets.USER_PASSWORD}}
+      - run: npm ci
+      - run: npm test
+

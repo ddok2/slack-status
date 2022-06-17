@@ -1,0 +1,16 @@
+{
+  "name": "slack-status",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.29.3",
+    "puppeteer": "^14.4.0"
+  }
+}
