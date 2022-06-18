@@ -89,6 +89,27 @@ const main = async () => {
         break
     }
 
+    // custom expiration setting → 다음 이후로 지우지 않음 으로 설정
+    await page.$eval(
+      'body > div.c-sk-modal_portal > div > div > ' +
+      'div.c-sk-modal_content.p-custom_status_modal__content > div > ' +
+      'div.c-scrollbar__hider > div > div > div.c-sk-modal_content_section.margin_top_75 > ' +
+      'div.p-custom_status_modal__expiration_default.c-basic-select > div',
+      div => div.click(),
+    ).catch(err => console.log(`📌 Custom expiration setting Err: ${err}`))
+
+    await page.waitForSelector(
+      'body > div.ReactModalPortal > div > div',
+      { timeout: 10 * 1000 },
+    ).catch(err => console.log(`📌 Custom expiration setting Err: ${err}`))
+
+    // no expiration 으로 설정
+    await page.$eval(
+      'body > div.ReactModalPortal > div > div > div > ' +
+      'div > div > div > div > div:nth-child(1) > span',
+      span => span.click(),
+    ).catch(err => console.log(`📌 Custom expiration setting Err: ${err}`))
+
     // 저장
     await page.$eval(
       'body > div.c-sk-modal_portal > div > div > ' +
