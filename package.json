@@ -6,7 +6,10 @@
   "scripts": {
     "test": "node app.js"
   },
-  "keywords": ["slack", "slack-status"],
+  "keywords": [
+    "slack",
+    "slack-status"
+  ],
   "author": "Sungyub NA <darkerkorean@gmail.com>",
   "license": "MIT",
   "dependencies": {
