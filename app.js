@@ -23,7 +23,12 @@ const main = async () => {
     return process.exit(1)
   }
 
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({
+    args: [
+      '--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ' +
+      'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36'
+    ],
+  })
   console.log(`💻 Try to logging at ${TARGET_URL}, with ${USER_EMAIL}`)
   console.log(`📌 Date: ${moment()}`)
 
